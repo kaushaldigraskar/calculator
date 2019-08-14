@@ -1,0 +1,197 @@
+package com.example.claculator;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity  {
+        Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0;\\BUTTON FOR EACH NUMBER AS B1 INDICATES BUTTON FOR "1" INTEGER
+        Button e,m,s,a,d,c;\\ this is for the use of multiplication as initials represents the type of operation  such m= multiplication
+        TextView e1;\\ it is to show the output
+        boolean Addition,Subtraction,Multiplication,Division,decimal;\\values on the basis of operation arae held
+        float input1 =  0,input2 = 0;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        e1 = (TextView) findViewById(R.id.editText);
+        b1 = (Button) findViewById(R.id.one);\\\initialisation
+        b2 = (Button) findViewById(R.id.two);
+        b3 = (Button) findViewById(R.id.three);
+        b4 = (Button) findViewById(R.id.four);
+        b5 = (Button) findViewById(R.id.five);
+        b6 = (Button) findViewById(R.id.six);
+        b7 = (Button) findViewById(R.id.seven);
+        b8 = (Button) findViewById(R.id.eight);
+        b9 = (Button) findViewById(R.id.nine);
+        b0 = (Button) findViewById(R.id.zero);
+        e = (Button) findViewById(R.id.equal);
+        s = (Button) findViewById(R.id.sub);
+        m = (Button) findViewById(R.id.mul);
+        d = (Button) findViewById(R.id.div);
+        a = (Button) findViewById(R.id.add);
+        c =(Button) findViewById(R.id.clear);
+        b1.setOnClickListener(new View.OnClickListener() {\\\below this it shows the how the numbers are going to send to the editText 
+            @Override
+            public void onClick(View v) {
+                e1.setText(e1.getText()+"1");
+
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                e1.setText(e1.getText()+"2");
+            }
+        });
+        b3.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                e1.setText(e1.getText()+"3");
+
+
+            }
+        });
+        b4.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                e1.setText(e1.getText()+"4");
+
+
+            }
+        });
+        b5.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                e1.setText(e1.getText()+"5");
+
+
+            }
+        });
+        b6.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                e1.setText(e1.getText()+"6");
+
+
+            }
+        });b7.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                e1.setText(e1.getText()+"7");
+
+
+            }
+        });b8.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                e1.setText(e1.getText()+"8");
+
+
+            }
+        });b9.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                e1.setText(e1.getText()+"9");
+
+
+            }
+        });b0.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                e1.setText(e1.getText()+"0");
+
+
+            }
+        });
+
+        m.setOnClickListener(new View.OnClickListener() {\\ below this there are mathematical equation which user wants to perform
+            @Override
+            public void onClick(View v) {
+
+                    input1 =Float.parseFloat(e1.getText()+"");
+                    Multiplication = true;
+                    decimal=false;
+                    e1.setText(null);
+
+            }
+        });
+        s.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    input1 = Float.parseFloat(e1.getText()+"");
+                    Subtraction = true;
+                    decimal=false;
+                    e1.setText(null);
+
+            }
+        });
+        d.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    input1 = Float.parseFloat(e1.getText()+"");
+                    Division = true;
+                    decimal=false;
+                    e1.setText(null);
+
+            }
+        });
+        a.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    input1 = Float.parseFloat(e1.getText()+"");
+                    Addition = true;
+                    decimal=false;
+                    e1.setText(null);
+
+            }
+        });
+        e.setOnClickListener( new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {\\this the main logic depend upon the boolean values as what action user want to perform .
+
+                if (Addition == true) {
+                    input2 = Float.parseFloat(e1.getText() + "");
+                    e1.setText(input1 + input2 + "");
+                    Addition = false;
+                }
+                if (Subtraction == true) {
+                    input2 = Float.parseFloat(e1.getText() + "");
+                    e1.setText(input1 - input2 + "");
+                }
+                Subtraction = false;
+
+                if (Multiplication == true) {
+                    input2 = Float.parseFloat(e1.getText() + "");
+                    e1.setText(input1 * input2 + "");
+                    Multiplication = false;
+                }
+                if (Division == true) {
+                    input2 = Float.parseFloat(e1.getText() + "");
+                    e1.setText(input1 / input2 + "");
+                    Division= false;
+                
+                }
+            }
+
+                       });
+        c.setOnClickListener(new View.OnClickListener() {\\this clears the edittext for the secon input 
+            @Override
+            public void onClick(View v) {
+                e1.setText("");
+
+            }
+        });
+        }
+
+
+}
+
+
